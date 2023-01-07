@@ -28,25 +28,31 @@ int adc_key_in  = 0;
 #define btnLEFT   3
 #define btnSELECT 4
 #define btnNONE   5
-char pos[8];  //size + 1
+char pos[10];  //size + 1
 
 void setup() {
  pinMode(10, INPUT); //must be set as INPUT
  pinMode(LED, OUTPUT);
  lcd.begin(16, 2);              // start the library
+ lcd.setCursor(0, 0);
+ lcd.print("D1 Robot LCD1602");
+ lcd.setCursor(1,1);
+ lcd.print("Keypad Shield");
+ delay(3000);
+ lcd.clear();
  lcd.setCursor(3, 0);
  lcd.print("Created By");
  lcd.setCursor(1,1);
  lcd.print("David C. Boyce");
- delay(2000);
+ delay(3000);
  lcd.clear();
  lcd.setCursor(0,0);
  lcd.print("Push any button"); // print a simple message
 }
  
 void loop() {
- lcd.setCursor(9,1);                  // move cursor to second line "1" and 9 spaces over
- dtostrf((millis()/1000), 7, 0, pos); //unique function converts float to string
+ lcd.setCursor(7,1);                  // move cursor to second line "1" and 9 spaces over
+ dtostrf((millis()/1000),9, 0, pos);  //unique function converts float to string
  lcd.print(pos);                      // display seconds elapsed since power-up
 
  lcd.setCursor(0,1);            // move to the begining of the second line
